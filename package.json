@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@bjorn3/browser_wasi_shim": "0.4.2",
+    "esbuild": "^0.28.0"
+  }
+}

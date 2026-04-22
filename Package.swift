@@ -4,14 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "WASMapp",
+    name: "WebAssemblyApp",
+    platforms: [
+        .macOS(.v15)
+    ],
+    dependencies: [
+        .package(url: "https://github.com/elementary-swift/elementary-ui", from: "0.2.2"),
+        .package(url: "https://github.com/swiftwasm/JavaScriptKit.git", from: "0.50.2"),
+    ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .executableTarget(
-            name: "WASMapp"
+            name: "WebAssemblyApp",
+            dependencies: [
+                .product(name: "JavaScriptKit", package: "javascriptkit"),
+                .product(name: "ElementaryUI", package: "elementary-ui"),
+            ],
+            exclude: ["entry.js"],
         ),
-
     ],
     swiftLanguageModes: [.v6]
 )
