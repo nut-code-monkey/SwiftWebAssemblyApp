@@ -2,7 +2,7 @@
 // https://docs.swift.org/swift-book
 
 @main
-struct WASMapp {
+struct WebAssemblyApp {
     static func main() {
         print("Hello, world!")
     }

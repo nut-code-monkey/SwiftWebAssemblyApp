@@ -9,6 +9,7 @@ let package = Package(
         .macOS(.v15)
     ],
     dependencies: [
+        .package(url: "https://github.com/elementary-swift/elementary.git", branch: "main"),
         .package(url: "https://github.com/elementary-swift/elementary-ui", from: "0.2.2"),
         .package(url: "https://github.com/swiftwasm/JavaScriptKit.git", from: "0.50.2"),
     ],
@@ -20,6 +21,12 @@ let package = Package(
                 .product(name: "ElementaryUI", package: "elementary-ui"),
             ],
             exclude: ["entry.js"],
+        ),
+        .executableTarget(
+            name: "AppLoader",
+            dependencies: [
+                .product(name: "Elementary", package: "elementary")
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]

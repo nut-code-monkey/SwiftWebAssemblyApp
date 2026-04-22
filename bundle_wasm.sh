@@ -129,5 +129,8 @@ else
   echo "⚠️ Warning: No entry.js found at $ENTRY_JS"
 fi
 
+echo "📄 HTML loader..."
+swift run AppLoader $TARGET_NAME "${DEST_DIR}/index.html"
+
 END_TIME=$(date +%s)
 echo "✅ Done in $((END_TIME - START_TIME))s!"
