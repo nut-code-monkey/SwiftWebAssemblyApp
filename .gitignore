@@ -19,3 +19,4 @@ Package.resolved
 Public/*/app.wasm
 Public/*/app.js
 Public/*/index.html
+.swiftpm

@@ -1,9 +1,8 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+import ElementaryUI
 
 @main
-struct WebAssemblyApp {
+struct WasmApp {
     static func main() {
-        print("Hello, world!")
+        Application(AppView()).mount(in: .body)
     }
 }

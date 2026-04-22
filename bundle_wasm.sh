@@ -29,6 +29,7 @@ fi
 
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
+
 # 2. Перевірка Node.js та esbuild
 ESBUILD="./node_modules/.bin/esbuild"
 if [ ! -f "$ESBUILD" ]; then
@@ -36,7 +37,7 @@ if [ ! -f "$ESBUILD" ]; then
     echo "❌ Error: 'npm' not found. Please install Node.js."
     exit 1
   fi
-  echo "📦 Installing dependencies..."
+  echo "📦 Installing dependencies...(esbuild)"
   [ ! -f "package.json" ] && npm init -y > /dev/null
   npm install --save-dev esbuild
 fi
@@ -88,7 +89,7 @@ if [ "$SKIP_SWIFT" -eq 0 ]; then
   echo "$BUILD_MODE" > "$LAST_MODE_FILE"
 fi
 
-# 6. WASM Processing (виправлена логіка)
+# 6. WASM Processing
 if [ ! -f "$WASM_SRC" ]; then
   echo "⚠️ Warning: Source WASM not found at $WASM_SRC"
   echo "Trying to find it..."
@@ -130,7 +131,7 @@ else
 fi
 
 echo "📄 HTML loader..."
-swift run AppLoader $TARGET_NAME "${DEST_DIR}/index.html"
+swift run --arch arm64 AppLoader $TARGET_NAME "${DEST_DIR}/index.html"
 
 END_TIME=$(date +%s)
 echo "✅ Done in $((END_TIME - START_TIME))s!"
